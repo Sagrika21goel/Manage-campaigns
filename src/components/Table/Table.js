@@ -1,20 +1,38 @@
 import React from "react";
 import Row from "../Row/Row";
-const Table = () => {
+import "./Table.css";
+
+const Table = ({ data }) => {
   return (
-    <table className="table">
-      <thead className="thead-light">
-        <tr>
-          <th>DATE</th>
-          <th>CAMPAIGN</th>
-          <th>VIEW</th>
-          <th>ACTIONS</th>
-        </tr>
-      </thead>
-      <tbody>
-        <Row />
-      </tbody>
-    </table>
+    <div className="table-responsive">
+      <table className="table">
+        <thead className="thead-light">
+          <tr>
+            <th>DATE</th>
+            <th>CAMPAIGN</th>
+            <th>VIEW</th>
+            <th>ACTIONS</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((value, key) => {
+            const date = value.createdOn;
+            const image = value.image_url;
+            const campaignName = value.name;
+            const campaignRegion = value.region;
+            return (
+              <Row
+                date={date}
+                image={image}
+                campaignName={campaignName}
+                campaignRegion={campaignRegion}
+                index={key}
+              />
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
   );
 };
 
