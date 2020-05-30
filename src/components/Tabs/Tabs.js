@@ -9,7 +9,7 @@ const Tabs = () => {
     const getcampaignlist = async () => {
       await axios({
         method: "get",
-        url: "http://localhost:8000/"
+        url: "https://api-manage-campaigns.herokuapp.com/"
       }).then(
         response => {
           setData(response.data.data);
