@@ -12,7 +12,7 @@ const Tabs = () => {
         url: "https://api-manage-campaigns.herokuapp.com/"
       }).then(
         response => {
-          setData(response.data.data);
+          setData(response.data);
         },
         error => {
           console.error(error);
@@ -56,13 +56,13 @@ const Tabs = () => {
         </ul>
         <div className="tab-content">
           <div className="tab-pane container active" id="upcomingCampaigns">
-            <Table data={data} />
+            <Table data={data.upcoming} />
           </div>
           <div className="tab-pane container fade" id="liveCampaigns">
-            <Table data={data} />
+            <Table data={data.live} />
           </div>
           <div className="tab-pane container fade" id="pastCampaigns">
-            <Table data={data} />
+            <Table data={data.past} />
           </div>
         </div>
       </div>
